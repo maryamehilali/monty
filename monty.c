@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 	line_read = 1;
 	while ((char_read = getline(&buffer, &bufsize, monty_file)) != -1)
 	{
-		printf("line %d: %s", line_read, buffer);
 		cmd_op = tokenize(buffer, " \t\n");
 		if (cmd_op[0] == NULL)
 		{
