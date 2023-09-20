@@ -1,10 +1,15 @@
 #include "monty.h"
-
+/**
+ * main - interpreter for Monty ByteCodes files.
+ * @argc: number of arguments to the program
+ * @argv: arguments given to the program
+ * Return: 0 or 1.
+ */
 int main(int argc, char **argv)
 {
 	FILE *monty_file;
 	int line_read, char_read;
-	char *buffer;
+	char *buffer = NULL;
 	size_t bufsize = sizeof(char) * LINE_SIZE;
 	char **cmd_op;
 	stack_t *head = NULL;
@@ -25,15 +30,19 @@ int main(int argc, char **argv)
 	while ((char_read = getline(&buffer, &bufsize, monty_file)) != -1)
 	{
 		printf("line %d: %s", line_read, buffer);
-		cmd_op = tokenize(buffer, " 	\t\n");
+		cmd_op = tokenize(buffer, " \t\n");
 		if (cmd_op[0] == NULL)
 		{
 			line_read++;
+			free(cmd_op);
 			continue;
 		}
 		execute_op(cmd_op, line_read, &head);
 		line_read++;
+		free(cmd_op);
 	}
+	free(buffer);
+	free_stack(head);
 	fclose(monty_file);
 	/*free_stack(&head);*/
 	return (EXIT_SUCCESS);

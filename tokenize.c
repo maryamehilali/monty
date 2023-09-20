@@ -10,23 +10,16 @@
 
 char **tokenize(char *string, char *delim)
 {
-	char *token;
-	char **words;
-	int i = 0;
-
-	words = malloc(sizeof(char *) * MAX_SIZE);
+	char **words = NULL;
+	
+	words = malloc(sizeof(char *) * 3);
 	if (words == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(string, delim);
-	while (token)
-	{
-		words[i] = token;
-		token = strtok(NULL, delim);
-		i++;
-	}
-	words[i] = NULL;
+	words[0] = strtok(string, delim);
+	words[1] = strtok(NULL, delim);
+	words[2] = NULL;
 	return (words);
 }

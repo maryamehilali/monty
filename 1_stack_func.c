@@ -11,17 +11,17 @@ void push_to_stack(stack_t **head, unsigned int line_number)
 {
 	stack_t *new = malloc(sizeof(stack_t));
 
-        if (new == NULL)
-        {
+	if (new == NULL)
+	{
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
-        }
-        new->n = line_number;
-        new->next = *head;
-        new->prev = NULL;
-        if (*head)
-                (*head)->prev = new;
-        *head = new;
+	}
+	new->n = line_number;
+	new->next = *head;
+	new->prev = NULL;
+	if (*head)
+		(*head)->prev = new;
+	*head = new;
 }
 /**
  * print_all_stack - function that prints all the elements on the stack
@@ -32,14 +32,30 @@ void push_to_stack(stack_t **head, unsigned int line_number)
 void print_all_stack(stack_t **head, unsigned int line_number)
 {
 	stack_t *ptr;
-        (void)line_number;
-	
-        ptr = *head;
+	(void)line_number;
+
+	ptr = *head;
+	while (ptr)
+	{
+		printf("%d\n", ptr->n);
+		ptr = ptr->next;
+	}
+}
+/**
+ * free_stack - funct that frees the stack or the doubly linked list
+ * @head: pointer to the top of the stack
+ * Return: nothing
+ */
+void free_stack(stack_t *head)
+{
+        stack_t *ptr;
+
+        ptr = head;
+
         while (ptr)
         {
-                printf("%d\n", ptr->n);
                 ptr = ptr->next;
+                free(head);
+                head = ptr;
         }
 }
-/*print_first_stack == print first node
-delete_first_stack == delete first node*/
