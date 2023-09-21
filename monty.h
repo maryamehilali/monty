@@ -43,8 +43,8 @@ typedef struct G_variables
 	FILE *monty_file;
 	char *buffer;
 	char **cmd_op;
-	stack_t *head;   
-}G_var;
+	stack_t *head;
+} G_var;
 extern G_var var;
 
 size_t stack_len(const stack_t *h);
