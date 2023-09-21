@@ -45,5 +45,19 @@ void sum_two_stack(stack_t **head, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		exit(EXIT_FAILURE); }}
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * no_action - function that dont do anything
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
+ */
+void no_action(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+}
 
