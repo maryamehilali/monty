@@ -14,7 +14,7 @@ char **tokenize(char *delim)
 	words = malloc(sizeof(char *) * 3);
 	if (words == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		free(var.buffer), fclose(var.monty_file);
 		exit(EXIT_FAILURE);
 	}
