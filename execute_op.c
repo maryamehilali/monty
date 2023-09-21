@@ -42,7 +42,7 @@ void execute_op(unsigned int line)
 	}
 	else if (options[i].f == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s", line, var.cmd_op[0]);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line, var.cmd_op[0]);
 		free(var.cmd_op), free(var.buffer);
 		free_stack(var.head), fclose(var.monty_file);
 		exit(EXIT_FAILURE);
