@@ -11,6 +11,8 @@ void push_to_stack(stack_t **head, unsigned int line_number)
 {
 	stack_t *new = malloc(sizeof(stack_t));
 
+	if (head == NULL)
+		return;
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
@@ -34,6 +36,8 @@ void print_all_stack(stack_t **head, unsigned int line_number)
 	stack_t *ptr;
 	(void)line_number;
 
+	if (head == NULL || *head == NULL)
+		return;
 	ptr = *head;
 	while (ptr)
 	{

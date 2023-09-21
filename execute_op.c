@@ -9,7 +9,7 @@
  * Return: Void
  */
 
-void execute_op(char **cmd_arg, unsigned int line, stack_t **head)
+void execute_op(char **cmd_arg, unsigned int line, stack_t **head, char **buffer)
 {
 	instruction_t options[] = {
 		{"push", push_to_stack},
@@ -33,6 +33,8 @@ void execute_op(char **cmd_arg, unsigned int line, stack_t **head)
 		else
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line);
+			free(cmd_arg), free(*buffer);
+			free_stack(*head);
 			exit(EXIT_FAILURE); }
 	}
 	else if (options[i].f == NULL)

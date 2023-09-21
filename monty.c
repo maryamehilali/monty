@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 			free(cmd_op);
 			continue;
 		}
-		execute_op(cmd_op, line_read, &head);
+		execute_op(cmd_op, line_read, &head, &buffer);
 		line_read++;
 		free(cmd_op);
 	}

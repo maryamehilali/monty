@@ -39,7 +39,7 @@ typedef struct instruction_s
 } instruction_t;
 void free_stack(stack_t *head);
 char **tokenize(char *string, char *delim);
-void execute_op(char **cmd_arg, unsigned int line, stack_t **head);
+void execute_op(char **cmd_arg, unsigned int line, stack_t **head, char **);
 void push_to_stack(stack_t **, unsigned int);
 int is_integer(char *arg);
 void print_all_stack(stack_t **, unsigned int);

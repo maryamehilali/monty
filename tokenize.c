@@ -11,7 +11,7 @@
 char **tokenize(char *string, char *delim)
 {
 	char **words = NULL;
-	
+
 	words = malloc(sizeof(char *) * 3);
 	if (words == NULL)
 	{
