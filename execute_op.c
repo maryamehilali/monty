@@ -34,11 +34,11 @@ void execute_op(char **cmd_arg, unsigned int line, stack_t **head)
 				push_to_stack(head, atoi(cmd_arg[1]));
 			else
 			{
-				fprintf(stderr, "L%d: usage: push integer", line);
+				fprintf(stderr, "L%d: usage: push integer\n", line);
 				exit(EXIT_FAILURE); }}
 		else
 		{
-			fprintf(stderr, "L%d: usage: push integer", line);
+			fprintf(stderr, "L%d: usage: push integer\n", line);
 			exit(EXIT_FAILURE); }
 	}
 	else if (options[i].f == NULL)
