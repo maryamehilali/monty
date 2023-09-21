@@ -6,16 +6,19 @@
  * @cmd_arg: the command and it's arguments taken from the file
  * @line: the line number of the command
  * @head: double pointer to the head of the doubly linked list
+ * @buffer: buffer
  * Return: Void
  */
 
-void execute_op(char **cmd_arg, unsigned int line, stack_t **head, char **buffer)
+void execute_op(char **cmd_arg, unsigned int line, stack_t **head,
+		char **buffer)
 {
 	instruction_t options[] = {
 		{"push", push_to_stack},
 		{"pall", print_all_stack},
+		{"pint", print_first_stack},
 	/**
-	 * {"pint", print_first_stack},{"pop", delete_first_stack},
+	 * {"pop", delete_first_stack},
 	 * {"swap", swap_two_stack},{"add", sum_two_stack},
 	 * {"nop", no_action},
 	 */

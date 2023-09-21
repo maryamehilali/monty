@@ -63,3 +63,20 @@ void free_stack(stack_t *head)
 		head = ptr;
 	}
 }
+/**
+ * print_first_stack - function that prints all top element on the stack
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
+ */
+void print_first_stack(stack_t **head, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (head == NULL || *head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*head)->n);
+}
