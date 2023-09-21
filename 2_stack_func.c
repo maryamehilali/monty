@@ -41,14 +41,12 @@ void sum_two_stack(stack_t **head, unsigned int line_number)
 	{
 		data1 = (*head)->n, data2 = (*head)->next->n;
 		*head = (*head)->next, (*head)->prev = NULL;
-		(*head)->n = data1 + data2, free(ptr); }
+		(*head)->n = data1 + data2, free(ptr);
+	}
 	else
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-}
-
+		exit(EXIT_FAILURE); }}
 /**
  * no_action - function that dont do anything
  * @head: pointer to the head of the list

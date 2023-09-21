@@ -21,6 +21,11 @@ void execute_op(char **cmd_arg, unsigned int line, stack_t **head,
 		{"swap", swap_two_stack},
 		{"add", sum_two_stack},
 		{"nop", no_action},
+		{"sub", sub_two_stack},
+		{"div", div_two_stack},
+		{"mul", mul_two_stack},
+		{"mod", mod_two_stack},
+		{"#", no_action},
 		{NULL, NULL}
 	};
 	int i = 0;

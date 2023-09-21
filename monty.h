@@ -48,6 +48,10 @@ void print_first_stack(stack_t **, unsigned int);
 void delete_first_stack(stack_t **, unsigned int);
 void swap_two_stack(stack_t **, unsigned int);
 void sum_two_stack(stack_t **, unsigned int);
+void sub_two_stack(stack_t **, unsigned int);
+void div_two_stack(stack_t **, unsigned int);
+void mul_two_stack(stack_t **, unsigned int);
+void mod_two_stack(stack_t **, unsigned int);
 void no_action(stack_t **, unsigned int);
 
 #endif
