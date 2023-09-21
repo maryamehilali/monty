@@ -37,10 +37,20 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+typedef struct G_variables
+{
+	FILE *monty_file;
+	char *buffer;
+	char **cmd_op;
+	stack_t *head;   
+}G_var;
+extern G_var var;
+
 size_t stack_len(const stack_t *h);
 void free_stack(stack_t *head);
-char **tokenize(char *string, char *delim);
-void execute_op(char **cmd_arg, unsigned int line, stack_t **head, char **);
+char **tokenize(char *delim);
+void execute_op(unsigned int line);
 void push_to_stack(stack_t **, unsigned int);
 int is_integer(char *arg);
 void print_all_stack(stack_t **, unsigned int);

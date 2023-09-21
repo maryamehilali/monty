@@ -3,15 +3,11 @@
 /**
  * execute_op - function that execute the right function depending
  *		on the giving opcode
- * @cmd_arg: the command and it's arguments taken from the file
  * @line: the line number of the command
- * @head: double pointer to the head of the doubly linked list
- * @buffer: buffer
  * Return: Void
  */
 
-void execute_op(char **cmd_arg, unsigned int line, stack_t **head,
-		char **buffer)
+void execute_op(unsigned int line)
 {
 	instruction_t options[] = {
 		{"push", push_to_stack},
@@ -31,26 +27,28 @@ void execute_op(char **cmd_arg, unsigned int line, stack_t **head,
 	int i = 0;
 
 	while (options[i].opcode != NULL &&
-			(strcmp(options[i].opcode, cmd_arg[0]) != 0))
+			(strcmp(options[i].opcode, var.cmd_op[0]) != 0))
 		i++;
 	if (options[i].f == push_to_stack)
 	{
-		if (cmd_arg[1] && is_integer(cmd_arg[1]))
-			push_to_stack(head, atoi(cmd_arg[1]));
+		if (var.cmd_op[1] && is_integer(var.cmd_op[1]))
+			push_to_stack(&(var.head), atoi(var.cmd_op[1]));
 		else
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line);
-			free(cmd_arg), free(*buffer);
-			free_stack(*head);
+			free(var.cmd_op), free(var.buffer);
+			free_stack(var.head), fclose(var.monty_file);
 			exit(EXIT_FAILURE); }
 	}
 	else if (options[i].f == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s", line, cmd_arg[0]);
+		fprintf(stderr, "L%d: unknown instruction %s", line, var.cmd_op[0]);
+		free(var.cmd_op), free(var.buffer);
+		free_stack(var.head), fclose(var.monty_file);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		options[i].f(head, line);
+		options[i].f(&(var.head), line);
 	}
 }

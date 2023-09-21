@@ -3,12 +3,11 @@
 /**
  * tokenize - function that takes a single string and split it into
  *		an array of strings using the delimeter delim.
- * @string: the input string.
  * @delim: the chosen delimeter.
  * Return: An array containing the result strings.
  */
 
-char **tokenize(char *string, char *delim)
+char **tokenize(char *delim)
 {
 	char **words = NULL;
 
@@ -16,9 +15,10 @@ char **tokenize(char *string, char *delim)
 	if (words == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
+		free(var.buffer), fclose(var.monty_file);
 		exit(EXIT_FAILURE);
 	}
-	words[0] = strtok(string, delim);
+	words[0] = strtok(var.buffer, delim);
 	words[1] = strtok(NULL, delim);
 	words[2] = NULL;
 	return (words);
