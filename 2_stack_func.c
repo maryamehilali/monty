@@ -10,19 +10,16 @@ void swap_two_stack(stack_t **head, unsigned int line_number)
 	stack_t *tmp;
 
 	if (head && *head && stack_len(*head) >= 2)
-	{
-		tmp = (*head)->next;
-		(*head)->prev = tmp;
+	{	tmp = (*head)->next, (*head)->prev = tmp;
 		(*head)->next = tmp->next;
 		if (tmp->next)
 			tmp->next->prev = *head;
-		tmp->next = *head;
-		tmp->prev = NULL;
-		*head = tmp; }
+		tmp->next = *head, tmp->prev = NULL, *head = tmp; }
 	else
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE); }}
+	{	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free(var.buffer), free(var.cmd_op), free_stack(var.head);
+		fclose(var.monty_file), exit(EXIT_FAILURE); }
+}
 /**
  * sum_two_stack - delete the top of the stack
  *		and add its data to the secont top;
@@ -32,21 +29,18 @@ void swap_two_stack(stack_t **head, unsigned int line_number)
  */
 void sum_two_stack(stack_t **head, unsigned int line_number)
 {
-	stack_t *ptr;
+	stack_t *ptr = *head;
 	int data1, data2;
 
-	ptr = *head;
-
 	if (*head && head && stack_len(*head) >= 2)
-	{
-		data1 = (*head)->n, data2 = (*head)->next->n;
+	{	data1 = (*head)->n, data2 = (*head)->next->n;
 		*head = (*head)->next, (*head)->prev = NULL;
-		(*head)->n = data1 + data2, free(ptr);
-	}
+		(*head)->n = data1 + data2, free(ptr); }
 	else
-	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		exit(EXIT_FAILURE); }}
+	{	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		free(var.buffer), free(var.cmd_op), free_stack(var.head);
+		fclose(var.monty_file), exit(EXIT_FAILURE); }
+}
 /**
  * no_action - function that dont do anything
  * @head: pointer to the head of the list
@@ -54,8 +48,6 @@ void sum_two_stack(stack_t **head, unsigned int line_number)
  * Return: nothing
  */
 void no_action(stack_t **head, unsigned int line_number)
-{
-	(void)head;
+{	(void)head;
 	(void)line_number;
 }
-

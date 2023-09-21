@@ -34,21 +34,17 @@ void execute_op(unsigned int line)
 		if (var.cmd_op[1] && is_integer(var.cmd_op[1]))
 			push_to_stack(&(var.head), atoi(var.cmd_op[1]));
 		else
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line);
+		{	fprintf(stderr, "L%d: usage: push integer\n", line);
 			free(var.cmd_op), free(var.buffer);
 			free_stack(var.head), fclose(var.monty_file);
 			exit(EXIT_FAILURE); }
 	}
 	else if (options[i].f == NULL)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line, var.cmd_op[0]);
+	{	fprintf(stderr, "L%d: unknown instruction %s\n", line, var.cmd_op[0]);
 		free(var.cmd_op), free(var.buffer);
 		free_stack(var.head), fclose(var.monty_file);
 		exit(EXIT_FAILURE);
 	}
 	else
-	{
 		options[i].f(&(var.head), line);
-	}
 }

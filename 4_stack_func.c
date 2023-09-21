@@ -1,110 +1,39 @@
 #include "monty.h"
-/**
- * sub_two_stack - delete the top of the stack
- *		and substracts add its data from the secont top;
- * @head: pointer to the head of the list
- * @line_number: line number
- * Return: nothing
- */
-void sub_two_stack(stack_t **head, unsigned int line_number)
-{
-	stack_t *ptr;
-	int data1, data2;
-
-	ptr = *head;
-
-	if (*head && head && stack_len(*head) >= 2)
-	{
-		data1 = (*head)->n, data2 = (*head)->next->n;
-		*head = (*head)->next, (*head)->prev = NULL;
-		(*head)->n = data2 - data1, free(ptr);
-	}
-	else
-	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-		exit(EXIT_FAILURE); }}
-/**
- * div_two_stack - delete the top of the stack
- *		and divides the secont top data by the first;
- * @head: pointer to the head of the list
- * @line_number: line number
- * Return: nothing
- */
-void div_two_stack(stack_t **head, unsigned int line_number)
-{
-	stack_t *ptr = *head;
-	int data1, data2;
-
-	if (*head && head && stack_len(*head) >= 2)
-	{
-		data1 = (*head)->n;
-		if (data1 == 0)
-		{
-			fprintf(stderr, "L%d: division by zero\n", line_number);
-			exit(EXIT_FAILURE); }
-		data2 = (*head)->next->n;
-		*head = (*head)->next, (*head)->prev = NULL;
-		(*head)->n = data2 / data1, free(ptr);
-	}
-	else
-	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}}
 
 /**
- * mul_two_stack - delete the top of the stack
- *		and multiplies its data by the secont top;
- * @head: pointer to the head of the list
- * @line_number: line number
- * Return: nothing
+ * stack_len - funct that counts the number of nodes in doubly linked list
+ * @h: pointer to the head of the list
+ * Return: number of nodes in the list
  */
-void mul_two_stack(stack_t **head, unsigned int line_number)
+size_t stack_len(const stack_t *h)
 {
-	stack_t *ptr;
-	int data1, data2;
+	const stack_t *ptr;
+	size_t count = 0;
 
-	ptr = *head;
-
-	if (*head && head && stack_len(*head) >= 2)
+	ptr = h;
+	while (ptr)
 	{
-		data1 = (*head)->n, data2 = (*head)->next->n;
-		*head = (*head)->next, (*head)->prev = NULL;
-		(*head)->n = data2 * data1, free(ptr);
+		count++;
+		ptr = ptr->next;
 	}
-	else
-	{
-		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		exit(EXIT_FAILURE); }}
+	return (count);
+}
 /**
- * mod_two_stack - delete the top of the stack and saves the rest
- *		of the division of data the secont top by the first;
- * @head: pointer to the head of the list
- * @line_number: line number
- * Return: nothing
+ * is_integer - function that verifies if a string is an int
+ * @arg: the string
+ * Return: 1 if an integer, 0 otherwise
  */
-void mod_two_stack(stack_t **head, unsigned int line_number)
+int is_integer(char *arg)
 {
-	stack_t *ptr;
-	int data1, data2;
-
-	ptr = *head;
-
-	if (*head && head && stack_len(*head) >= 2)
+	if (arg == NULL || *arg == '\0')
+		return (0);
+	if (*arg == '+' || *arg == '-')
+		arg++;
+	while (*arg)
 	{
-		data1 = (*head)->n;
-		if (data1 == 0)
-		{
-			fprintf(stderr, "L%d: division by zero\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-		data2 = (*head)->next->n;
-		*head = (*head)->next, (*head)->prev = NULL;
-		(*head)->n = data2 % data1, free(ptr);
+		if (isdigit(*arg) == 0)
+			return (0);
+		arg++;
 	}
-	else
-	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		exit(EXIT_FAILURE); }}
-
-
+	return (1);
+}
