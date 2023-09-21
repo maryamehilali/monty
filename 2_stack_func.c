@@ -9,7 +9,7 @@ void swap_two_stack(stack_t **head, unsigned int line_number)
 {
 	stack_t *tmp;
 
-	if (*head && (*head)->next)
+	if (head && *head && stack_len(*head) >= 2)
 	{
 		tmp = (*head)->next;
 		(*head)->prev = tmp;
@@ -18,29 +18,32 @@ void swap_two_stack(stack_t **head, unsigned int line_number)
 			tmp->next->prev = *head;
 		tmp->next = *head;
 		tmp->prev = NULL;
-		*head = tmp;
-	}
+		*head = tmp; }
 	else
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}}
+		exit(EXIT_FAILURE); }}
 /**
- * is_integer - function that verifies if a string is an int
- * @arg: the string
- * Return: 1 if an integer, 0 otherwise
+ * sum_two_stack - delete the top of the stack
+ *		and add its data to the secont top;
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
  */
-int is_integer(char *arg)
+void sum_two_stack(stack_t **head, unsigned int line_number)
 {
-	if (arg == NULL || *arg == '\0')
-		return (0);
-	if (*arg == '+' || *arg == '-')
-		arg++;
-	while (*arg)
+	stack_t *ptr;
+	int data1, data2;
+
+	ptr = *head;
+
+	if (*head && head && stack_len(*head) >= 2)
 	{
-		if (isdigit(*arg) == 0)
-			return (0);
-		arg++;
-	}
-	return (1);
-}
+		data1 = (*head)->n, data2 = (*head)->next->n;
+		*head = (*head)->next, (*head)->prev = NULL;
+		(*head)->n = data1 + data2, free(ptr); }
+	else
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE); }}
+

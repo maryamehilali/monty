@@ -19,8 +19,8 @@ void execute_op(char **cmd_arg, unsigned int line, stack_t **head,
 		{"pint", print_first_stack},
 		{"pop", delete_first_stack},
 		{"swap", swap_two_stack},
+		{"add", sum_two_stack},
 	/**
-	 * {"add", sum_two_stack},
 	 * {"nop", no_action},
 	 */
 		{NULL, NULL}

@@ -37,6 +37,7 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+size_t stack_len(const stack_t *h);
 void free_stack(stack_t *head);
 char **tokenize(char *string, char *delim);
 void execute_op(char **cmd_arg, unsigned int line, stack_t **head, char **);
