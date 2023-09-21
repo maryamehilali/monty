@@ -21,7 +21,6 @@ void execute_op(unsigned int line)
 		{"div", div_two_stack},
 		{"mul", mul_two_stack},
 		{"mod", mod_two_stack},
-		{"#", no_action},
 		{NULL, NULL}
 	};
 	int i = 0;

@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	while ((char_read = getline(&(var.buffer), &bufsize, var.monty_file)) != -1)
 	{
 		var.cmd_op = tokenize(" \t\n");
-		if (var.cmd_op[0] == NULL)
+		if (var.cmd_op[0] == NULL || strncmp(var.cmd_op, "#", 1) == 0)
 		{
 			line_read++;
 			free(var.cmd_op);
