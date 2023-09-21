@@ -80,3 +80,28 @@ void print_first_stack(stack_t **head, unsigned int line_number)
 	}
 	printf("%d\n", (*head)->n);
 }
+/**
+ * delete_first_stack - delete the top of the stack;
+ *		node at index 0 of a doubly linked list
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
+ */
+void delete_first_stack(stack_t **head, unsigned int line_number)
+{
+	stack_t *ptr;
+
+	ptr = *head;
+
+	if (*head)
+	{
+		*head = (*head)->next;
+		if (*head)
+			(*head)->prev = NULL;
+		free(ptr);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}}
