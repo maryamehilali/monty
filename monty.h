@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #define MAX_SIZE 1024
 #define LINE_SIZE 163
@@ -40,6 +41,7 @@ void free_stack(stack_t *head);
 char **tokenize(char *string, char *delim);
 void execute_op(char **cmd_arg, unsigned int line, stack_t **head);
 void push_to_stack(stack_t **, unsigned int);
+int is_integer(char *arg);
 void print_all_stack(stack_t **, unsigned int);
 void print_first_stack(stack_t **, unsigned int);
 void delete_first_stack(stack_t **, unsigned int);

@@ -28,14 +28,8 @@ void execute_op(char **cmd_arg, unsigned int line, stack_t **head)
 		i++;
 	if (options[i].f == push_to_stack)
 	{
-		if (cmd_arg[1])
-		{
-			if (atoi(cmd_arg[1]) != 0 || strcmp(cmd_arg[1], "0") == 0)
-				push_to_stack(head, atoi(cmd_arg[1]));
-			else
-			{
-				fprintf(stderr, "L%d: usage: push integer\n", line);
-				exit(EXIT_FAILURE); }}
+		if (cmd_arg[1] && is_integer(cmd_arg[1]))
+			push_to_stack(head, atoi(cmd_arg[1]));
 		else
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line);
@@ -44,7 +38,10 @@ void execute_op(char **cmd_arg, unsigned int line, stack_t **head)
 	else if (options[i].f == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s", line, cmd_arg[0]);
-		exit(EXIT_FAILURE); }
+		exit(EXIT_FAILURE);
+	}
 	else
+	{
 		options[i].f(head, line);
+	}
 }

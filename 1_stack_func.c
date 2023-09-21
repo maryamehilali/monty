@@ -48,14 +48,14 @@ void print_all_stack(stack_t **head, unsigned int line_number)
  */
 void free_stack(stack_t *head)
 {
-        stack_t *ptr;
+	stack_t *ptr;
 
-        ptr = head;
+	ptr = head;
 
-        while (ptr)
-        {
-                ptr = ptr->next;
-                free(head);
-                head = ptr;
-        }
+	while (ptr)
+	{
+		ptr = ptr->next;
+		free(head);
+		head = ptr;
+	}
 }
