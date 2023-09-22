@@ -64,6 +64,7 @@ void sub_two_stack(stack_t **, unsigned int);
 void div_two_stack(stack_t **, unsigned int);
 void mul_two_stack(stack_t **, unsigned int);
 void mod_two_stack(stack_t **, unsigned int);
+void rotl_stack(stack_t **, unsigned int);
 void no_action(stack_t **, unsigned int);
 
 #endif

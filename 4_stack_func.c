@@ -1,6 +1,32 @@
 #include "monty.h"
 
 /**
+ * rotl_stack - rotates the stack to the top; first becomes the last
+ *		second become the first
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
+ */
+void rotl_stack(stack_t **head, unsigned int line_number)
+{
+	stack_t *ptr, *tmp;
+	(void)line_number;
+
+	ptr = *head;
+
+	if (*head)
+	{
+		while(ptr->next)
+			ptr = ptr->next;
+		tmp = *head;
+		(*head) = (*head)->next;
+		(*head)->prev = NULL;
+		ptr->next = tmp;
+		tmp->prev = ptr;
+		tmp->next = NULL;
+	}
+}
+/**
  * stack_len - funct that counts the number of nodes in doubly linked list
  * @h: pointer to the head of the list
  * Return: number of nodes in the list

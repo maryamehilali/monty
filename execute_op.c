@@ -23,6 +23,7 @@ void execute_op(unsigned int line)
 		{"mod", mod_two_stack},
 		{"pchar", print_char_stack},
 		{"pstr", print_string_stack},
+		{"rotl", rotl_stack},
 		{NULL, NULL}
 	};
 	int i = 0;
