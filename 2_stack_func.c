@@ -51,3 +51,29 @@ void no_action(stack_t **head, unsigned int line_number)
 {	(void)head;
 	(void)line_number;
 }
+
+/**
+ * print_char_stack - function that prints the ascii value
+ *		of the data at the top element on the stack
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
+ */
+void print_char_stack(stack_t **head, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (head == NULL || *head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free(var.buffer), free(var.cmd_op), free_stack(var.head);
+		fclose(var.monty_file), exit(EXIT_FAILURE);
+	}
+	if ((*head)->n < 0 || (*head)->n > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free(var.buffer), free(var.cmd_op), free_stack(var.head);
+		fclose(var.monty_file), exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*head)->n);
+}

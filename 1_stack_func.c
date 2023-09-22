@@ -16,7 +16,8 @@ void push_to_stack(stack_t **head, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);
+		free(var.buffer), free(var.cmd_op), free_stack(var.head);
+		fclose(var.monty_file), exit(EXIT_FAILURE);
 	}
 	new->n = line_number;
 	new->next = *head;
@@ -76,7 +77,8 @@ void print_first_stack(stack_t **head, unsigned int line_number)
 	if (head == NULL || *head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		free(var.buffer), free(var.cmd_op), free_stack(var.head);
+		fclose(var.monty_file), exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*head)->n);
 }
@@ -103,5 +105,6 @@ void delete_first_stack(stack_t **head, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}}
+		free(var.buffer), free(var.cmd_op), free_stack(var.head);
+		fclose(var.monty_file), exit(EXIT_FAILURE); }
+}
