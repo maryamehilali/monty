@@ -55,6 +55,7 @@ void push_to_stack(stack_t **, unsigned int);
 int is_integer(char *arg);
 void print_all_stack(stack_t **, unsigned int);
 void print_char_stack(stack_t **, unsigned int);
+void print_string_stack(stack_t **, unsigned int);
 void print_first_stack(stack_t **, unsigned int);
 void delete_first_stack(stack_t **, unsigned int);
 void swap_two_stack(stack_t **, unsigned int);

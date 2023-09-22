@@ -77,3 +77,32 @@ void print_char_stack(stack_t **head, unsigned int line_number)
 	}
 	printf("%c\n", (*head)->n);
 }
+
+/**
+ * print_string_stack - function that prints a string using the ascii value
+ *		of the data at the top element on the stack and stops
+ *		if it finds 0 or out of range of ascii
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
+ */
+void print_string_stack(stack_t **head, unsigned int line_number)
+{
+	stack_t *ptr = *head;
+	(void)line_number;
+
+	if (head == NULL || *head == NULL)
+	{
+		printf("\n");
+		return;
+	}
+	while (ptr)
+	{
+		if (!(ptr->n < 1 || ptr->n > 127 || ptr->n == 0))
+			printf("%c", ptr->n);
+		else
+			break;
+		ptr = ptr->next;
+	}
+	printf("\n");
+}
