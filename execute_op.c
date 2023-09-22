@@ -10,8 +10,7 @@
 void execute_op(unsigned int line)
 {
 	instruction_t options[] = {
-		{"push", push_to_stack},
-		{"pall", print_all_stack},
+		{"push", push_to_stack}, {"pall", print_all_stack},
 		{"pint", print_first_stack},
 		{"pop", delete_first_stack},
 		{"swap", swap_two_stack},

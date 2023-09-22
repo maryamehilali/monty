@@ -16,7 +16,7 @@ void rotl_stack(stack_t **head, unsigned int line_number)
 
 	if (*head && (*head)->next)
 	{
-		while(ptr->next)
+		while (ptr->next)
 			ptr = ptr->next;
 		tmp = *head;
 		(*head) = (*head)->next;
@@ -42,7 +42,7 @@ void rotr_stack(stack_t **head, unsigned int line_number)
 
 	if (*head && (*head)->next)
 	{
-		while(ptr->next)
+		while (ptr->next)
 			ptr = ptr->next;
 		tmp = ptr->prev;
 		(*head)->prev = ptr;
