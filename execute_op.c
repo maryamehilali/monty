@@ -24,6 +24,7 @@ void execute_op(unsigned int line)
 		{"pchar", print_char_stack},
 		{"pstr", print_string_stack},
 		{"rotl", rotl_stack},
+		{"rotr", rotr_stack},
 		{NULL, NULL}
 	};
 	int i = 0;

@@ -27,6 +27,32 @@ void rotl_stack(stack_t **head, unsigned int line_number)
 	}
 }
 /**
+ * rotr_stack - rotates the stack to the bottom; first becomes second
+ *		last becomes the first
+ * @head: pointer to the head of the list
+ * @line_number: line number
+ * Return: nothing
+ */
+void rotr_stack(stack_t **head, unsigned int line_number)
+{
+	stack_t *ptr, *tmp;
+	(void)line_number;
+
+	ptr = *head;
+
+	if (*head && (*head)->next)
+	{
+		while(ptr->next)
+			ptr = ptr->next;
+		tmp = ptr->prev;
+		(*head)->prev = ptr;
+		ptr->next = *head;
+		ptr->prev = NULL;
+		tmp->next = NULL;
+		(*head) = ptr;
+	}
+}
+/**
  * stack_len - funct that counts the number of nodes in doubly linked list
  * @h: pointer to the head of the list
  * Return: number of nodes in the list
